@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Funciones
+
+install_ngrok ()
+{
+  curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+  return 0
+}
+
 echo "Actualicemos la lista de paquetes primero"
 sudo apt update &>/dev/null && echo "Actualizada con exito la lista de paquetes" || echo "¡Error al actualizar la lista de paquetes!" 
 echo "instalaremos java 8 y ngrok"
@@ -31,11 +39,3 @@ elif [[ $server_type == *v* ]]; then
   echo "Descargando archivos de server Vanilla"
   wget -O $jar_name https://piston-data.mojang.com/v1/objects/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar &>/dev/null && echo "Descarga completa" || echo "Descarga Fallida"
 fi
-
-# funciones
-
-install_ngrok ()
-{
-  curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
-  return 0
-}
