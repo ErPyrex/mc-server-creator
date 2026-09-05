@@ -1,0 +1,24 @@
+# Minecraft server instances and worlds
+servers/
+world/
+world_nether/
+world_the_end/
+backups/
+logs/
+crash-reports/
+
+# Binaries & archives
+*.jar
+*.tar.gz
+*.zip
+
+# Logs & temp files
+*.log
+ngrok.log
+playit.log
+.DS_Store
+
+# Credentials
+*.key
+*.token
+.env
